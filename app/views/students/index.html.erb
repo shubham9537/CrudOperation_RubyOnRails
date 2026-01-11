@@ -1,0 +1,27 @@
+<h2>Students</h2>
+
+<%= link_to "Add Student", new_student_path, class: "btn btn-primary" %>
+
+<br><br>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.email %></td>
+      <td><%= student.age %></td>
+      <td>
+        <%= link_to "View", student, class: "btn btn-secondary" %>
+        <%= link_to "Edit", edit_student_path(student), class: "btn btn-warning" %>
+        <%= link_to "Delete", student, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
